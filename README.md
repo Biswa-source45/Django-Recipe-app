@@ -128,7 +128,7 @@ Follow these steps to set up and run the project locally:
 ### Installation
 1. **Clone the repository**:
    ```bash
-   git clone <>
+   git clone https://github.com/Biswa-source45/Django-Recipe-app.git
    cd Djcrudoperation
    ```
 
@@ -140,7 +140,7 @@ Follow these steps to set up and run the project locally:
 
 3. **Install dependencies**:
    ```bash
-   pip install django pillow
+  pip install -r requirements.txt
    ```
 
 4. **Apply migrations**:
@@ -186,11 +186,6 @@ Follow these steps to set up and run the project locally:
 
 ---
 
-## 🖼️ Screenshots
-
-*(Add screenshots here if desired, e.g., of the login page, recipe list, etc.)*
-
----
 
 ## 🔧 Configuration
 
