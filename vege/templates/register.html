@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <div class="container">
+        
+        <form class="col-6 mx-auto card p-3 shadow-lg mt-2" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1 style="font-size: 3rem; margin-top: 5;">Register</h1>
+            <hr>
+
+            
+
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name" name="first_name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name" name="last_name" required>
+              </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username" name="user_name" required>
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group mt-2">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control mt-1" id="exampleInputPassword1" placeholder="Password" name="password" required >
+            </div>
+            <p>Already have account <a href="/login/">Login</a> </p>
+
+            <button type="submit" class="btn btn-primary mt-3">Register</button>
+          </form>
+
+    </div>
+</body>
+</html>

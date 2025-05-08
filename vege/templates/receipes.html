@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciepes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body >
+
+  <nav class="navbar  bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">The Reciepes Application</a>
+      <form class="d-flex" role="search">
+        <h4 class="m-1">{{request.user.first_name}} {{request.user.last_name}} </h4>
+        <a class="btn btn-outline-danger" type="submit" href="/logout/">Logout</a>
+      </form>
+    </div>
+  </nav>
+    
+    <div class="container">
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+
+       
+
+            {% csrf_token %}
+            <h2>Add reciepe</h2>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Reciepe Name</label>
+              <input type="text" class="form-control" name="receipe_name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Reciepe Description</label>
+              <textarea class="form-control" name="receipe_description" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Reciepe Description</label>
+                <input type="file" class="form-control" name="receipe_image" required>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Add Reciepe</button>
+          </form>
+
+          <hr>
+          <form>
+          <div class="mt-5">
+            
+            <div class="mx-auto col-6">
+              <div class="mb-3">
+
+                <label for="exampleInputEmail1" class="form-label">Reciepe Name</label>
+                <input type="text" class="form-control" name="search">
+              </div>
+              <button class="btn btn-primary">search</button>
+
+            </div>
+          </div>
+        </form>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Reciepe Name</th>
+                <th scope="col">Reciepe Description</th>
+                <th scope="col">Reciepe Image</th>
+                <th scope="col">Oporations</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for reciepe in receipes %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{reciepe.receipe_name}}</td>
+                <td>{{reciepe.receipe_description}}</td>
+                <td> <img src="/media/{{reciepe.receipe_image}}" alt="#" style="height: 100px; width: 100px;"> </td>
+                <td>
+                  <a href="/delete-receipe/{{reciepe.id}}/" class="btn btn-danger">Delete</a>
+                  <a href="/update-receipes/{{reciepe.id}}/" class="btn btn-success">Update</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
