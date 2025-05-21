@@ -1,1 +1,0 @@
-web: gunicorn Djcrudoperation.wsgi --log-file
